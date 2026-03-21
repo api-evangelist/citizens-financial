@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  title: Citizens Bank ATM Locator API
+  description: >-
+    The Citizens Bank ATM Locator API enables users to locate all Citizens
+    Bank ATMs throughout the USA. The API supports queries by zip code,
+    street address, or latitude and longitude coordinates, returning ATM
+    location details including hours of operation and whether the location
+    is a standalone ATM or part of another entity.
+  version: '1.0'
+  contact:
+    name: Citizens Bank Developer Support
+    url: https://developer.citizensbank.com/support
+externalDocs:
+  description: Citizens Bank API Developer Portal
+  url: https://developer.citizensbank.com/
+servers:
+  - url: https://api.citizensbank.com
+    description: Production
+  - url: https://sandboxapi.citizensbank.com
+    description: Sandbox
+tags:
+  - name: ATM Locations
+    description: Search and retrieve ATM location data
+paths:
+  /atms:
+    get:
+      operationId: searchATMs
+      summary: Search ATM locations
+      description: >-
+        Searches for Citizens Bank ATM locations by zip code, street
+        address, or geographic coordinates. Returns location details
+        including hours and facility type.
+      tags:
+        - ATM Locations
+      parameters:
+        - name: zipCode
+          in: query
+          schema:
+            type: string
+          description: ZIP code to search near
+        - name: address
+          in: query
+          schema:
+            type: string
+          description: Street address to search near
+        - name: latitude
+          in: query
+          schema:
+            type: number
+            format: double
+          description: Latitude coordinate
+        - name: longitude
+          in: query
+          schema:
+            type: number
+            format: double
+          description: Longitude coordinate
+        - name: radius
+          in: query
+          schema:
+            type: number
+          description: Search radius in miles
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of results to return
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ATMList'
+        '400':
+          description: Bad request
+components:
+  schemas:
+    ATMList:
+      type: object
+      properties:
+        atms:
+          type: array
+          items:
+            $ref: '#/components/schemas/ATM'
+        totalCount:
+          type: integer
+    ATM:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique ATM identifier
+        name:
+          type: string
+          description: ATM location name
+        address:
+          type: object
+          properties:
+            street:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zipCode:
+              type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        hoursOfOperation:
+          type: string
+          description: Operating hours description
+        locationType:
+          type: string
+          description: Standalone ATM or part of another entity
+        facilities:
+          type: array
+          items:
+            type: string
+          description: Available services at the ATM
