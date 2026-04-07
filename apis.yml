@@ -1,16 +1,14 @@
 aid: citizens-financial
-url: 
-  https://raw.githubusercontent.com/api-evangelist/citizens-financial/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/citizens-financial/refs/heads/main/apis.yml
 apis:
   - aid: citizens-financial:accounts-api
     name: Citizens Bank Accounts API
     tags:
-      - Banking
       - Accounts
-      - Transactions
+      - Banking
       - Open Banking
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Transactions
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.citizensbank.com
     humanURL: https://developer.citizensbank.com/
     properties:
@@ -30,12 +28,11 @@ apis:
   - aid: citizens-financial:atm-locator-api
     name: Citizens Bank ATM Locator API
     tags:
-      - Banking
       - ATMs
-      - Locations
+      - Banking
       - Geolocation
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Locations
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.citizensbank.com
     humanURL: https://developer.citizensbank.com/
     properties:
@@ -53,12 +50,11 @@ apis:
   - aid: citizens-financial:citizens-pay-api
     name: Citizens Pay API
     tags:
-      - Payments
-      - Point of Sale
       - Financing
       - Lending
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Payments
+      - Point of Sale
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.citizenspay.com
     humanURL: https://developer-citizenspay.citizensbank.com/
     properties:
