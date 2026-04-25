@@ -70,8 +70,8 @@ The Citizens Pay API enables merchants and partners to integrate Citizens Pay po
 - [Support](https://developer.citizensbank.com/support)
 - [Privacy Policy](https://www.citizensbank.com/privacy)
 - [JSON-LD Context](json-ld/citizens-financial-context.jsonld)
-- [Spectral Ruleset](spectral/citizens-financial-spectral.yml)
-- [Naftiko Capabilities](naftiko/citizens-financial-capabilities.yml)
+- [Spectral Ruleset](rules/citizens-financial-rules.yml)
+- [Naftiko Capabilities](capabilities/citizens-financial-capabilities.yml)
 
 ## Maintainers
 

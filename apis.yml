@@ -105,9 +105,9 @@ common:
   - type: JSON-LD
     url: json-ld/citizens-financial-context.jsonld
   - type: Spectral
-    url: spectral/citizens-financial-spectral.yml
+    url: rules/citizens-financial-rules.yml
   - type: Naftiko Capabilities
-    url: naftiko/citizens-financial-capabilities.yml
+    url: capabilities/citizens-financial-capabilities.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
