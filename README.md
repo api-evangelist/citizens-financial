@@ -1,22 +1,22 @@
 # Citizens Financial (citizens-financial)
-Citizens Financial Group is a regional banking institution operating as Citizens Bank, providing retail and commercial banking services across the United States. Citizens Bank offers a developer portal at developer.citizensbank.com with REST APIs for account information, transaction data, ATM location services, and point-of-sale financing through Citizens Pay, supporting open banking integrations with sandbox and production environments.
+Citizens Financial Group is one of the oldest and largest financial institutions in the United States, providing retail and commercial banking products and services. Citizens Bank exposes a developer portal at developer.citizensbank.com offering REST APIs for deposit account and transaction data, ATM location services, and point-of-sale consumer financing through Citizens Pay, with sandbox and production environments under OAuth 2.0.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/citizens-financial/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract
-- **Position:** Consuming
+- **Type:** Index
+- **Position:** Consumer
 - **Access:** 3rd-Party
 
 ## Tags:
 
- - Banking, Open Banking, Accounts, Transactions, ATMs, Payments
+ - Accounts, ATMs, Banking, Open Banking, Payments, Point of Sale, Transactions
 
 ## Timestamps
 
 - **Created:** 2026-03-21
-- **Modified:** 2026-03-21
+- **Modified:** 2026-04-23
 
 ## APIs
 
@@ -25,10 +25,9 @@ The Citizens Bank Accounts API enables authenticated consumers to programmatical
 
 **Human URL:** [https://developer.citizensbank.com/](https://developer.citizensbank.com/)
 
-
 #### Tags:
 
- - Banking, Accounts, Transactions, Open Banking
+ - Accounts, Banking, Open Banking, Transactions
 
 #### Properties
 
@@ -41,10 +40,9 @@ The Citizens Bank ATM Locator API enables users to locate all Citizens Bank ATMs
 
 **Human URL:** [https://developer.citizensbank.com/](https://developer.citizensbank.com/)
 
-
 #### Tags:
 
- - Banking, ATMs, Locations, Geolocation
+ - ATMs, Banking, Geolocation, Locations
 
 #### Properties
 
@@ -56,10 +54,9 @@ The Citizens Pay API enables merchants and partners to integrate Citizens Pay po
 
 **Human URL:** [https://developer-citizenspay.citizensbank.com/](https://developer-citizenspay.citizensbank.com/)
 
-
 #### Tags:
 
- - Payments, Point of Sale, Financing, Lending
+ - Financing, Lending, Payments, Point of Sale
 
 #### Properties
 
@@ -67,14 +64,17 @@ The Citizens Pay API enables merchants and partners to integrate Citizens Pay po
 
 ## Common Properties
 
+- [Website](https://www.citizensbank.com/)
 - [Portal](https://developer.citizensbank.com/)
 - [Sandbox](https://sandboxdeveloper.citizensbank.com/api)
 - [Support](https://developer.citizensbank.com/support)
-- [Website](https://www.citizensbank.com/)
-- [PrivacyPolicy](https://www.citizensbank.com/privacy)
+- [Privacy Policy](https://www.citizensbank.com/privacy)
+- [JSON-LD Context](json-ld/citizens-financial-context.jsonld)
+- [Spectral Ruleset](spectral/citizens-financial-spectral.yml)
+- [Naftiko Capabilities](naftiko/citizens-financial-capabilities.yml)
 
 ## Maintainers
 
-**FN:** API Evangelist
+**FN:** Kin Lane
 
-**Email:** info@apievangelist.com
+**Email:** kin@apievangelist.com

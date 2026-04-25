@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "@vocab": "https://apievangelist.com/vocab/citizens-financial/",
+    "schema": "https://schema.org/",
+    "cf": "https://developer.citizensbank.com/vocab/",
+    "Organization": "schema:BankOrCreditUnion",
+    "API": "schema:WebAPI",
+    "Account": "cf:DepositAccount",
+    "Transaction": "cf:BankTransaction",
+    "ATM": "schema:AutomatedTeller",
+    "Merchant": "schema:Organization",
+    "Loan": "schema:LoanOrCredit",
+    "name": "schema:name",
+    "description": "schema:description",
+    "category": "schema:category",
+    "balance": "cf:accountBalance",
+    "transactionType": "cf:transactionType",
+    "createdAt": "schema:dateCreated",
+    "updatedAt": "schema:dateModified"
+  }
+}
