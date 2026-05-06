@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,146 +9,77 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Citizens Financial
 providerId: citizens-financial
-publisherName: Citizens Financial
-serviceCategory: API
+publisherName: Citizens Bank, N.A.
+serviceCategory: Banking
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Accounts
-  - ATMs
   - Banking
-  - Open Banking
+  - Financial Services
   - Payments
-  - Point of Sale
-  - Transactions
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Citizens Financial API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: FOCUS-aligned FinOps shape for Citizens Financial Group's developer APIs. Cost is driven
+  by Citizens' underlying commercial banking, payments, and treasury services - APIs themselves are
+  not separately metered; charges flow from per-transaction wire / ACH / RTP fees and account-level
+  service charges in the master commercial banking agreement.
+notes: Per-API meters below are placeholders that mirror typical commercial banking line items.
+sources:
+  - https://www.citizensbank.com/corporate-finance/
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Take Rate + Per-Transaction Fees
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
     - Usage
-    - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Refund
+    - Credit
 focusColumns:
   ServiceName: Citizens Financial
-  ServiceCategory: Developer Tools / API
-  ProviderName: Citizens Financial
-  PublisherName: Citizens Financial
-  InvoiceIssuerName: Citizens Financial
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceCategory: Banking
+  ProviderName: Citizens Financial Group
+  PublisherName: Citizens Bank, N.A.
+  InvoiceIssuerName: Citizens Bank, N.A.
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
+  - name: payment_transactions
+    description: ACH / Wire / RTP payments initiated via Citizens APIs.
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - rail
+      - direction
+      - geography
+  - name: account_services
+    description: Monthly account-level service charges (statement reporting, balance reporting).
+    unit: account-month
+    aggregation: max
+    dimensions:
+      - account_type
+  - name: api_calls
+    description: API call counts (informational; not directly billed).
     unit: request
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Citizens Bank Accounts API
-    baseURL: https://api.citizensbank.com
-    tags:
-      - Accounts
-      - Banking
-      - Open Banking
-      - Transactions
-    serviceName: Citizens Bank Accounts API
-    serviceCategory: API
-  - name: Citizens Bank ATM Locator API
-    baseURL: https://api.citizensbank.com
-    tags:
-      - ATMs
-      - Banking
-      - Geolocation
-      - Locations
-    serviceName: Citizens Bank ATM Locator API
-    serviceCategory: API
-  - name: Citizens Pay API
-    baseURL: https://api.citizenspay.com
-    tags:
-      - Financing
-      - Lending
-      - Payments
-      - Point of Sale
-    serviceName: Citizens Pay API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - api_product
+      - environment
+principles:
+  - name: Visibility
+    description: Use Citizens commercial account-analysis statements and the Citizens developer portal
+      usage dashboard to track API consumption alongside transaction fees.
+  - name: Allocation
+    description: Tag every API client / app to a Citizens account and business unit so payment line
+      items can be attributed back to the consuming team.
+  - name: Optimization
+    description: Route low-priority payments through ACH instead of wire, reuse OAuth tokens, and
+      throttle balance-reporting polling cadence.
+  - name: Accountability
+    description: Treasury operations owns Citizens service-fee budgets; partner integration owners are
+      accountable for clean reconciliation and exception management.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
