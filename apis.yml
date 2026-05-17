@@ -100,9 +100,9 @@ common:
     url: https://sandboxdeveloper.citizensbank.com/api
   - type: Support
     url: https://developer.citizensbank.com/support
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.citizensbank.com/privacy
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/citizens-financial-context.jsonld
   - type: Spectral
     url: rules/citizens-financial-rules.yml
