@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Citizens Bank ATM Locator API — ATM Locations
+  description: 'Citizens Bank ATM Locator API — ATM Locations. 1 operations. Lead operation: Search ATM locations. Self-contained
+    Naftiko capability covering one Citizens Financial business surface.'
+  tags:
+  - Citizens Financial
+  - ATM Locations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CITIZENS_FINANCIAL_API_KEY: CITIZENS_FINANCIAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: citizens-bank-atm-locator-atm-locations
+    baseUri: https://api.citizensbank.com
+    description: Citizens Bank ATM Locator API — ATM Locations business capability. Self-contained, no shared references.
+    resources:
+    - name: atms
+      path: /atms
+      operations:
+      - name: searchatms
+        method: GET
+        description: Search ATM locations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: zipCode
+          in: query
+          type: string
+          description: ZIP code to search near
+        - name: address
+          in: query
+          type: string
+          description: Street address to search near
+        - name: latitude
+          in: query
+          type: number
+          description: Latitude coordinate
+        - name: longitude
+          in: query
+          type: number
+          description: Longitude coordinate
+        - name: radius
+          in: query
+          type: number
+          description: Search radius in miles
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results to return
+  exposes:
+  - type: rest
+    namespace: citizens-bank-atm-locator-atm-locations-rest
+    port: 8080
+    description: REST adapter for Citizens Bank ATM Locator API — ATM Locations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/atms
+      name: atms
+      description: REST surface for atms.
+      operations:
+      - method: GET
+        name: searchatms
+        description: Search ATM locations
+        call: citizens-bank-atm-locator-atm-locations.searchatms
+        with:
+          zipCode: rest.zipCode
+          address: rest.address
+          latitude: rest.latitude
+          longitude: rest.longitude
+          radius: rest.radius
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: citizens-bank-atm-locator-atm-locations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Citizens Bank ATM Locator API — ATM Locations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: search-atm-locations
+      description: Search ATM locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: citizens-bank-atm-locator-atm-locations.searchatms
+      with:
+        zipCode: tools.zipCode
+        address: tools.address
+        latitude: tools.latitude
+        longitude: tools.longitude
+        radius: tools.radius
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
