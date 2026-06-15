@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "aef61782-8fc9-4d87-90c2-424858f7416e",
+      "name": "ATM Locations",
+      "description": {
+        "content": "Search and retrieve ATM location data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2d0e563-7705-478c-b571-824d7fc85150",
+          "name": "Search ATM locations",
+          "request": {
+            "name": "Search ATM locations",
+            "description": {
+              "content": "Searches for Citizens Bank ATM locations by zip code, street address, or geographic coordinates. Returns location details including hours and facility type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "atms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zipCode",
+                  "value": "<string>",
+                  "description": "ZIP code to search near"
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Street address to search near"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>",
+                  "description": "Latitude coordinate"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>",
+                  "description": "Longitude coordinate"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<number>",
+                  "description": "Search radius in miles"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "094dbc11-2e19-421c-abbf-dc86aff9da98",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zipCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"atms\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\"\n      },\n      \"latitude\": 4854.525945797331,\n      \"longitude\": 5491.7783295391655,\n      \"hoursOfOperation\": \"string\",\n      \"locationType\": \"string\",\n      \"facilities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\"\n      },\n      \"latitude\": 8534.993523226209,\n      \"longitude\": 6691.609927234542,\n      \"hoursOfOperation\": \"string\",\n      \"locationType\": \"string\",\n      \"facilities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"totalCount\": 5802\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "464a51cf-36a0-4089-a968-6857b3ad8837",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zipCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.citizensbank.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ad798fb-b711-4e99-b65d-b7e19bf528df",
+    "name": "Citizens Bank ATM Locator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Citizens Bank ATM Locator API enables users to locate all Citizens Bank ATMs throughout the USA. The API supports queries by zip code, street address, or latitude and longitude coordinates, returning ATM location details including hours of operation and whether the location is a standalone ATM or part of another entity.\n\nContact Support:\n Name: Citizens Bank Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
