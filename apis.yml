@@ -81,6 +81,8 @@ apis:
       applications and checkout experiences. Citizens Pay provides consumer financing solutions that allow customers to
       pay over time for purchases through participating retailers.
 common:
+  - type: OAuthScopes
+    url: scopes/citizens-financial-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/rbs-citizens-financial-group
   - type: Website
