@@ -81,6 +81,10 @@ apis:
       applications and checkout experiences. Citizens Pay provides consumer financing solutions that allow customers to
       pay over time for purchases through participating retailers.
 common:
+  - type: DomainSecurity
+    url: security/citizens-financial-domain-security.yml
+  - type: Authentication
+    url: authentication/citizens-financial-authentication.yml
   - type: OAuthScopes
     url: scopes/citizens-financial-scopes.yml
   - type: LinkedIn

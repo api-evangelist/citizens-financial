@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/citizens-bank-accounts-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.citizensbank.com/oauth/authorize
+    tokenUrl: https://api.citizensbank.com/oauth/token
+    scopes: 2
+  sources:
+  - openapi/citizens-bank-accounts-api-openapi.yml
