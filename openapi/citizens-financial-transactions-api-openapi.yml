@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: Citizens Bank Accounts Transactions API
+  description: The Citizens Bank Accounts API enables authenticated consumers to programmatically retrieve deposit account and transaction data for Citizens Bank customers. Designed exclusively for Savings and Checking accounts, it provides structured access to account metadata and detailed transaction histories through a RESTful interface.
+  version: '1.0'
+  contact:
+    name: Citizens Bank Developer Support
+    url: https://developer.citizensbank.com/support
+servers:
+- url: https://api.citizensbank.com
+  description: Production
+- url: https://sandboxapi.citizensbank.com
+  description: Sandbox
+security:
+- oauth2: []
+tags:
+- name: Transactions
+  description: Retrieve transaction history
+paths:
+  /accounts/{accountId}/transactions:
+    get:
+      operationId: getTransactions
+      summary: Get account transactions
+      description: Retrieves transaction history for a specific deposit account with optional date filtering and pagination.
+      tags:
+      - Transactions
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique account identifier
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+        description: Start date for transaction search
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date
+        description: End date for transaction search
+      - name: limit
+        in: query
+        schema:
+          type: integer
+        description: Maximum number of transactions to return
+      - name: offset
+        in: query
+        schema:
+          type: integer
+        description: Offset for pagination
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionList'
+        '404':
+          description: Account not found
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Unique transaction identifier
+        date:
+          type: string
+          format: date-time
+          description: Transaction date and time
+        description:
+          type: string
+          description: Transaction description
+        amount:
+          type: number
+          description: Transaction amount
+        type:
+          type: string
+          description: Transaction type (debit, credit)
+        balance:
+          type: number
+          description: Running balance after transaction
+        category:
+          type: string
+          description: Transaction category
+    TransactionList:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        totalCount:
+          type: integer
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.citizensbank.com/oauth/authorize
+          tokenUrl: https://api.citizensbank.com/oauth/token
+          scopes:
+            accounts:read: Read account information
+            transactions:read: Read transaction history
+externalDocs:
+  description: Citizens Bank API Developer Portal
+  url: https://developer.citizensbank.com/
