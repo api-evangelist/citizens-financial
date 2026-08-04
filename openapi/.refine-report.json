@@ -1,0 +1,18 @@
+{
+  "provider": "citizens-financial",
+  "sources": [
+    "citizens-financial-accounts-api-openapi.yml",
+    "citizens-financial-atm-locations-api-openapi.yml",
+    "citizens-financial-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "citizens-financial-accounts-api-openapi.yml",
+    "citizens-financial-atm-locations-api-openapi.yml",
+    "citizens-financial-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
