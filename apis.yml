@@ -131,6 +131,9 @@ apis:
   - type: Documentation
     url: https://developer.citizensbank.com/
 common:
+  - type: CapabilityMap
+    url: capabilities/citizens-financial-capability-edges.yml
+    name: Citizens Financial Business Capability Map
   - type: AgenticAccess
     url: agentic-access/citizens-financial-agentic-access.yml
   - type: DomainSecurity
