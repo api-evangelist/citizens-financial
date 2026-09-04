@@ -30,7 +30,7 @@ created: '2026-03-21'
 modified: '2026-05-19'
 type: Index
 access: 3rd-Party
-position: Consumer
+position: Consuming
 specificationVersion: '0.23'
 tags:
   - Account
